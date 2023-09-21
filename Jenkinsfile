@@ -31,8 +31,8 @@ pipeline {
         }
         stage('Hello world'){
             steps{
-                echo branch
-                echo 'Hello World'
+                echo "${branch}"
+                echo "Hello World"
                 echo SERVICE_CREDS
                 echo credentials_of_ssh
             }

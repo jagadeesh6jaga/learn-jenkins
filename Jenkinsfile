@@ -2,6 +2,7 @@ pipeline {
     agent { node { label 'workstation-node'}}
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
+                credentials_of_ssh = CREDENTIAL('centos-ssh')
             }
 
     stages {
@@ -14,6 +15,7 @@ pipeline {
             steps{
                 echo 'Hello World'
                 echo SERVICE_CREDS
+                echo credentials_of_ssh
             }
         }
         stage('Hello Jenkins'){

@@ -34,8 +34,9 @@ pipeline {
                 echo 'Hello Jenkins'
             }
         }
-        stage('parameters'){
-            echo "Hello ${params.PERSON}"
+        stage('parameters of input'){
+            steps{
+                echo "Hello ${params.PERSON}"
 
                 echo "Biography: ${params.BIOGRAPHY}"
 
@@ -45,6 +46,7 @@ pipeline {
 
                 echo "Password: ${params.PASSWORD}"
         }
+    }
     }
     post { 
         always { 

@@ -6,6 +6,7 @@ pipeline {
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
                 credentials_of_ssh = credentials('centos-ssh')
+                branch = 'main'
             }
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -36,13 +37,13 @@ pipeline {
             }
         }
         stage('Hello Jenkins'){
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."
-                submitter "alice,bob"
-                parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-                }
+            // input {
+            //     message "Should we continue?"
+            //     ok "Yes, we should."
+            //     submitter "alice,bob"
+            //     parameters {
+            //         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+            //     }
             }
             steps{
                 echo 'Hello Jenkins'

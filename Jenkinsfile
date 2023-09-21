@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Hello') {
             when {
-                branch 'prod'
+                branch 'Main'
             }
             steps {
                 echo 'Hello'

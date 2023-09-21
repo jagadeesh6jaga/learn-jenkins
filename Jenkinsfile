@@ -13,7 +13,7 @@ pipeline {
         stage('Hello world'){
             steps{
                 echo 'Hello World'
-                echo ${SERVICE_CREDS}
+                echo SERVICE_CREDS
             }
         }
         stage('Hello Jenkins'){

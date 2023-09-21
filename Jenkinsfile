@@ -6,7 +6,7 @@ pipeline {
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
                 credentials_of_ssh = credentials('centos-ssh')
-                branch1  = 'Main'
+                // branch1  = 'Main'
             }
     // parameters {
     //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
@@ -23,7 +23,7 @@ pipeline {
     stages {
         stage('Hello') {
             when {
-                branch1 'Main'
+                branch 'main'
             }
             steps {
                 echo 'Hello'
@@ -31,7 +31,7 @@ pipeline {
         }
         stage('Hello world'){
             steps{
-                echo branch1
+                echo branch
                 echo 'Hello World'
                 echo SERVICE_CREDS
                 echo credentials_of_ssh

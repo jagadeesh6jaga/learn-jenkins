@@ -1,5 +1,8 @@
 pipeline {
     agent { node { label 'workstation-node'}}
+    environment {
+                SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
+            }
 
     stages {
         stage('Hello') {
@@ -10,6 +13,7 @@ pipeline {
         stage('Hello world'){
             steps{
                 echo 'Hello World'
+                echo ${SERVICE_CREDS}
             }
         }
         stage('Hello Jenkins'){

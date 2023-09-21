@@ -1,8 +1,7 @@
 pipeline {
-    agent none
+    agent { node { label 'workstation-node'}}
 
     stages {
-        agent { node { label 'workstation-node'}}
         stage('Hello') {
             steps {
                 echo 'Hello'

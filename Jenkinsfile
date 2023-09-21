@@ -7,17 +7,17 @@ pipeline {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
                 credentials_of_ssh = credentials('centos-ssh')
             }
-    parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    // parameters {
+    //     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+    //     text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+    //     booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
 
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+    //     choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
 
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
-    }
+    //     password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+    // }
     
     stages {
         stage('Hello') {
@@ -33,23 +33,31 @@ pipeline {
             }
         }
         stage('Hello Jenkins'){
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
             steps{
                 echo 'Hello Jenkins'
             }
         }
-        stage('parameters of input'){
-            steps{
-                echo "Hello ${params.PERSON}"
+    //     stage('parameters of input'){
+    //         steps{
+    //             echo "Hello ${params.PERSON}"
 
-                echo "Biography: ${params.BIOGRAPHY}"
+    //             echo "Biography: ${params.BIOGRAPHY}"
 
-                echo "Toggle: ${params.TOGGLE}"
+    //             echo "Toggle: ${params.TOGGLE}"
 
-                echo "Choice: ${params.CHOICE}"
+    //             echo "Choice: ${params.CHOICE}"
 
-                echo "Password: ${params.PASSWORD}"
-        }
-    }
+    //             echo "Password: ${params.PASSWORD}"
+    //     }
+    // }
     }
     post { 
         always { 

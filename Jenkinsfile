@@ -2,7 +2,7 @@ pipeline {
     agent { node { label 'workstation-node'}}
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
-                credentials_of_ssh = CREDENTIAL('centos-ssh')
+                credentials_of_ssh = credentials('centos-ssh')
             }
 
     stages {

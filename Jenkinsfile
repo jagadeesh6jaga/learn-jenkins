@@ -1,8 +1,8 @@
 pipeline {
     agent { node { label 'workstation-node'}}
-    triggers{
-        cron('*/1 * * * *')
-    }
+    // triggers{
+    //     cron('*/1 * * * *')
+    // }
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
                 credentials_of_ssh = credentials('centos-ssh')

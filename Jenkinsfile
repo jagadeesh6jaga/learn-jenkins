@@ -17,7 +17,7 @@ pipeline {
     }
     triggers{
         cron(*/1 * * * *)
-    }   
+    }
     stages {
         stage('Hello') {
             steps {

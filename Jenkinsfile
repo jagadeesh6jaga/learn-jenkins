@@ -19,7 +19,6 @@ pipeline {
             }
         }
     }
-    agent { node { label 'workstation-node'}}
     post { 
         always { 
             echo 'I will always say Hello again!'

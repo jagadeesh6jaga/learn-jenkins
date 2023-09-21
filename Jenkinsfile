@@ -1,5 +1,8 @@
 pipeline {
     agent { node { label 'workstation-node'}}
+    triggers{
+        cron('*/1 * * * *')
+    }
     environment {
                 SERVICE_CREDS = "SERVICE CREDENTIAL ARE EMPTY"
                 credentials_of_ssh = credentials('centos-ssh')
@@ -15,9 +18,7 @@ pipeline {
 
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    triggers{
-        cron(*/1 * * * *)
-    }
+    
     stages {
         stage('Hello') {
             steps {

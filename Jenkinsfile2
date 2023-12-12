@@ -1,3 +1,4 @@
+// scripted pipeline
 node {
     stage('build'){
         echo '''building the application'''

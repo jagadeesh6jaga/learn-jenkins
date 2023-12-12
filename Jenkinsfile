@@ -1,17 +1,12 @@
-node {
-    stage('build'){
-        echo '''building the application'''
-
+pipeline{
+    agent any
+    stages{
+        stage('build'){
+            steps {
+                echo 'build'
+                echo 'test'
+                echo 'declarative pipeline'
+            }
+        }
     }
-    stage('test'){
-        echo '''testing the application'''
-    }
-    stage('code quality check'){
-        echo '''checking the code quality'''
-    }
-    stage('deploy'){
-        echo '''deploying the application'''
-
-    }
-
 }

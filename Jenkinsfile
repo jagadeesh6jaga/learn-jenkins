@@ -1,12 +1,37 @@
+// declarative pipeline
+
 pipeline{
     agent any
     stages{
         stage('build'){
             steps {
                 echo 'build'
-                echo 'test'
-                echo 'declarative pipeline'
             }
         }
+        stage('test'){
+            steps{
+                echo 'test'
+            }
+        }
+        stage('deploy'){
+            steps{
+                echo 'deploy'
+            }
+        }
+
     }
+    post{
+        always {
+            echo "i run always"
+        }
+        success {
+            echo "i run when pipeline success"
+        }
+        failure {
+            echo "i run when pipeline failed"
+        }
+    }
+        
+        
+        
 }

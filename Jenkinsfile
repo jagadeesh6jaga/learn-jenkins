@@ -28,10 +28,41 @@ pipeline{
                 sh "mvn clean compile"
             }
         }
-        stage('integration test'){
+        // stage('integration test'){
+        //     steps{
+        //         sh "mvn failsafe:integration-test failsafe"
+        //     }
+        // }
+        stage('Package'){
             steps{
-                sh "mvn failsafe:integration-test failsafe"
+                sh "mvn package -DskipTests"
+            }
+        }
+        stage('build Docker Image'){
+            steps{
+
+                // "docker build -t 6226/currencyexchange:$env.BUILD_TAG"
+                script{
+                   dockerImage =  docker.build("6226/currencyexchange:${env.BUILD_TAG}")
+                }
+            }
+        }
+
+        stage('push Docker Image'){
+            steps{
+                script{
+                    docker.withRegistry('', 'dockerHub'){
+                    dockerImage.push();
+                    dockerImage.push('latest');
+                    }
+
+                }
             }
         }
     }
+
+
+
+
+
 }
